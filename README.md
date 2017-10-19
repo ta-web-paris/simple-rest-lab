@@ -117,24 +117,24 @@ We required for you a function `generateId` to do that. It takes no arguments an
 
 ### `GET /api/authors`
 
-Returns the list of all authors:
+Send the list of all authors.
 
 ```json5
 // GET /api/authors
 [
   {
-    "id": 1,
+    "id": "<some unique id>",
     "name": "Leanne Graham",
     "website": "hildegard.org"
   },
   {
-    "id": 2,
+    "id": "<some unique id>",
     "name": "Ervin Howell",
     "website": "anastasia.net"
   },
   // ...
   {
-    "id": 10,
+    "id": "<some unique id>",
     "name": "Clementina DuBuque",
     "website": "ambrose.net"
   }
@@ -157,7 +157,7 @@ Create a new author with the data sent in the body. Send back the created author
 
 ### `GET /api/authors/:authorId`
 
-Send the author with the id _:authorId_.
+Send the author with the id `authorId`.
 
 ```json5
 // GET /api/authors/e34bd5b3-9d25-4ed8-b147-b0bd05068b4f
@@ -170,7 +170,7 @@ Send the author with the id _:authorId_.
 
 ### `PUT /api/authors/:authorId`
 
-If the author of id _:authorId_ exists, replace it with the provided data. If it doesn't, create an author with the provided data.
+If the author of id `authorId` exists, replace it with the provided data. If it doesn't, create an author with the provided data.
 In all cases, send the author at the end.
 
 If there is an id in the request body, make sure that it matches the one in the URL.
@@ -198,7 +198,7 @@ Otherwise, send an approriate error.
 
 ### `GET /api/authors/:authorId/books`
 
-Send all books of the author that has the id _:authorId_.
+Send all books of the author that has the id `authorId`.
 
 ```json5
 // GET /api/authors/e34bd5b3-9d25-4ed8-b147-b0bd05068b4f
@@ -249,14 +249,14 @@ Send the book of id `bookId`.
 
 ```json5
 // GET /api/books/88fbd04f-4214-4fa4-9f78-8f4d16e8437a
-// {
-//   "id": "88fbd04f-4214-4fa4-9f78-8f4d16e8437a",
-//   "author": "<some unique id>",
-//   "title":
-//     "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-//   "description":
-//     "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-// }
+{
+  "id": "88fbd04f-4214-4fa4-9f78-8f4d16e8437a",
+  "author": "<some unique id>",
+  "title":
+    "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "description":
+    "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
 ```
 
 ### `POST /api/books`
@@ -281,7 +281,7 @@ Create a new book with the data sent in the body. Send back the created book.
 
 ### `DELETE /api/books/:bookId`
 
-Remove the book of id _:bookId_. Do not send anything (you still need to send the right HTTP code).
+Remove the book of id `bookId`. Do not send anything (you still need to send the right HTTP code).
 
 ### `PATCH /api/books/:bookId`
 
