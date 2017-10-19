@@ -7,7 +7,19 @@ const router = express.Router();
 
 // Define your endpoints here
 router.get("/", (req, res, next) => {
-  res.json(authorsDB);
+  let attribute = req.query.sort;
+
+  function compare(a, b) {
+    if (a[attribute] < b[attribute]) return -1;
+    if (a[attribute] > b[attribute]) return 1;
+    return 0;
+  }
+
+  if (attribute) {
+    res.json(authorsDB.slice(0).sort(compare));
+  } else {
+    res.json(authorsDB);
+  }
 });
 
 router.post("/", (req, res, next) => {
@@ -61,5 +73,17 @@ router.get("/:idauthor/books", (req, res, next) => {
   });
   res.json(books);
 });
+
+// Bonus time
+// router.get("/?sort=name", (req, res, next) => {
+//   let attribute = req.query.sort;
+//
+//   function compare(a, b) {
+//     if (a.attribute < b.attribute) return -1;
+//     if (a.attribute > b.attribute) return 1;
+//     return 0;
+//   }
+//   authorsDB.sort(compare);
+// });
 
 module.exports = router;
